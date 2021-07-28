@@ -19,4 +19,33 @@ public class CircularDoublyLinkedList {
     public int getLength() {
         return length;
     }
+
+
+
+    // To insert a new element at the start
+    public void insertAtStart (int data) {
+        Node newNode = new Node(data);
+        length++;
+
+        if(start == null) {
+            start = newNode;
+            start.setNextNode(start);
+            start.setPreviousNode(start);
+            end = start;
+            return;
+        }
+        else if(length == 1) {
+            newNode.setNextNode(start);
+            newNode.setPreviousNode(start);
+            start.setNextNode(newNode);
+            start.setPreviousNode(newNode);
+            return;
+        }
+
+        newNode.setNextNode(start);
+        newNode.setPreviousNode(end);
+        start.setPreviousNode(newNode);
+        start = newNode;
+        end.setNextNode(start);
+    }
 }
