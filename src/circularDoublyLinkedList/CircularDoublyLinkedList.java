@@ -49,4 +49,34 @@ public class CircularDoublyLinkedList {
         start = newNode;
         end.setNextNode(start);
     }
+
+
+
+    // To insert new element after end or say between end and start
+    public void insertAtEnd (int data) {
+        Node newNode = new Node(data);
+        length++;
+
+        if(start == null) {
+            start = newNode;
+            start.setNextNode(start);
+            start.setPreviousNode(start);
+            end = start;
+            return;
+        }
+        else if(length == 1) {
+            newNode.setNextNode(start);
+            newNode.setPreviousNode(end);
+            end.setNextNode(newNode);
+            start.setPreviousNode(newNode);
+            end = newNode;
+            return;
+        }
+
+        newNode.setNextNode(start);
+        newNode.setPreviousNode(end);
+        start.setPreviousNode(newNode);
+        end.setNextNode(newNode);
+        end = newNode;
+    }
 }
