@@ -112,4 +112,26 @@ public class CircularDoublyLinkedList {
         currentNode.setNextNode(newNode);
         newNode.setPreviousNode(currentNode);
     }
+
+
+
+    // To delete a node from the start position
+    public void deleteFromStart () {
+        if(start == null) {
+            System.out.println("Your Circular Doubly LinkedList is already empty.");
+            return;
+        }
+        else if(length == 1) {
+            start = null;
+            end = null;
+            length--;
+            return;
+        }
+
+        length--;
+        Node newStart = start.getNextNode();
+        newStart.setPreviousNode(end);
+        end.setNextNode(newStart);
+        start = newStart;
+    }
 }
