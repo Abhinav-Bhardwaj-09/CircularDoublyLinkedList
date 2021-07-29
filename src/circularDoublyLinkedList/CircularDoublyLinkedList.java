@@ -156,4 +156,28 @@ public class CircularDoublyLinkedList {
         start.setPreviousNode(newEnd);
         end = newEnd;
     }
+
+
+
+    // To display element of the linkedList from left to right
+    public void displayLeftToRight () {
+        if(start == null) {
+            System.out.println("Your Circular Doubly LinkedList is already empty.");
+            return;
+        }
+
+        int count = 1;
+        Node currentNode = start;
+        System.out.print("(Start) ");
+        while(count <= length) {
+            if(count < length) {
+                System.out.print(currentNode.getData() + " --> ");
+            }
+            else {
+                System.out.println(currentNode.getData() + " --> Start");
+            }
+            currentNode = currentNode.getNextNode();
+            count++;
+        }
+    }
 }
