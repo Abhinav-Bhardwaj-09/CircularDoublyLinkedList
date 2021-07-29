@@ -192,13 +192,13 @@ public class CircularDoublyLinkedList {
 
         int count = 1;
         Node currentNode = end;
-        System.out.print("(Start) ");
+        System.out.print("(End) ");
         while(count <= length) {
             if (count < length) {
                 System.out.print(currentNode.getData() + " --> ");
             }
             else {
-                System.out.println(currentNode.getData() + " --> Start");
+                System.out.println(currentNode.getData() + " --> End");
             }
             currentNode = currentNode.getPreviousNode();
             count++;
