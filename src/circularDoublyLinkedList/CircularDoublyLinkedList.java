@@ -79,4 +79,37 @@ public class CircularDoublyLinkedList {
         end.setNextNode(newNode);
         end = newNode;
     }
+
+
+
+    // To insert new element on a particular position
+    public void insertAtPosition (int data, int position) {
+        if(position > length + 1) {
+            System.out.println("Position Should be less than or equal to (length + 1).");
+            return;
+        }
+        else if(position == 1) {
+            insertAtStart(data);
+            return;
+        }
+        else if(position == length) {
+            insertAtEnd(data);
+            return;
+        }
+
+        Node newNode = new Node(data);
+        length++;
+
+        int count = 1;
+        Node currentNode = start;
+        while(count < position-1) {
+            currentNode = currentNode.getNextNode();
+            count++;
+        }
+
+        newNode.setNextNode(currentNode.getNextNode());
+        newNode.getNextNode().setPreviousNode(newNode);
+        currentNode.setNextNode(newNode);
+        newNode.setPreviousNode(currentNode);
+    }
 }
