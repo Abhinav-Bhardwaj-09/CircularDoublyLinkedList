@@ -27,14 +27,14 @@ public class CircularDoublyLinkedList {
         Node newNode = new Node(data);
         length++;
 
-        if(start == null) {
+        if (start == null) {
             start = newNode;
             start.setNextNode(start);
             start.setPreviousNode(start);
             end = start;
             return;
         }
-        else if(length == 1) {
+        else if (length == 1) {
             newNode.setNextNode(start);
             newNode.setPreviousNode(start);
             start.setNextNode(newNode);
@@ -57,14 +57,14 @@ public class CircularDoublyLinkedList {
         Node newNode = new Node(data);
         length++;
 
-        if(start == null) {
+        if (start == null) {
             start = newNode;
             start.setNextNode(start);
             start.setPreviousNode(start);
             end = start;
             return;
         }
-        else if(length == 1) {
+        else if (length == 1) {
             newNode.setNextNode(start);
             newNode.setPreviousNode(end);
             end.setNextNode(newNode);
@@ -84,15 +84,15 @@ public class CircularDoublyLinkedList {
 
     // To insert new element on a particular position
     public void insertAtPosition (int data, int position) {
-        if(position > length + 1) {
+        if (position > length + 1) {
             System.out.println("Position Should be less than or equal to (length + 1).");
             return;
         }
-        else if(position == 1) {
+        else if (position == 1) {
             insertAtStart(data);
             return;
         }
-        else if(position == length) {
+        else if (position == length) {
             insertAtEnd(data);
             return;
         }
@@ -117,11 +117,11 @@ public class CircularDoublyLinkedList {
 
     // To delete a node from the start position
     public void deleteFromStart () {
-        if(start == null) {
+        if (start == null) {
             System.out.println("Your Circular Doubly LinkedList is already empty.");
             return;
         }
-        else if(length == 1) {
+        else if (length == 1) {
             start = null;
             end = null;
             length--;
@@ -139,11 +139,11 @@ public class CircularDoublyLinkedList {
 
     // To delete a node from the end
     public void deleteFromEnd() {
-        if(start == null) {
+        if (start == null) {
             System.out.println("Your Circular Doubly LinkedList is already empty.");
             return;
         }
-        else if(length == 1) {
+        else if (length == 1) {
             start = null;
             end = null;
             length--;
@@ -161,7 +161,7 @@ public class CircularDoublyLinkedList {
 
     // To display element of the linkedList from left to right
     public void displayLeftToRight () {
-        if(start == null) {
+        if (start == null) {
             System.out.println("Your Circular Doubly LinkedList is already empty.");
             return;
         }
@@ -170,13 +170,37 @@ public class CircularDoublyLinkedList {
         Node currentNode = start;
         System.out.print("(Start) ");
         while(count <= length) {
-            if(count < length) {
+            if (count < length) {
                 System.out.print(currentNode.getData() + " --> ");
             }
             else {
                 System.out.println(currentNode.getData() + " --> Start");
             }
             currentNode = currentNode.getNextNode();
+            count++;
+        }
+    }
+
+
+
+    // To display elements of the linkedList from right to left
+    public void displayRightToLeft () {
+        if (start == null) {
+            System.out.println("Your Circular Doubly LinkedList is already empty.");
+            return;
+        }
+
+        int count = 1;
+        Node currentNode = end;
+        System.out.print("(Start) ");
+        while(count <= length) {
+            if (count < length) {
+                System.out.print(currentNode.getData() + " --> ");
+            }
+            else {
+                System.out.println(currentNode.getData() + " --> Start");
+            }
+            currentNode = currentNode.getPreviousNode();
             count++;
         }
     }
