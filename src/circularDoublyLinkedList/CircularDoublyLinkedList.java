@@ -159,6 +159,35 @@ public class CircularDoublyLinkedList {
 
 
 
+    // To delete an element from a particular position
+    public void deleteFromPosition(int position) {
+        if (position > length) {
+            System.out.println("Position Should be less than or equal to (length + 1).");
+            return;
+        }
+        else if (position == 1) {
+            deleteFromStart();
+            return;
+        }
+        else if (position == length) {
+            deleteFromEnd();
+            return;
+        }
+
+        int count = 1;
+        Node currentNode = start;
+
+        while(count < position - 1) {
+            currentNode = currentNode.getNextNode();
+            count++;
+        }
+        currentNode.setNextNode(currentNode.getNextNode().getNextNode());
+        currentNode.getNextNode().setPreviousNode(currentNode);
+        length--;
+    }
+
+
+
     // To display element of the linkedList from left to right
     public void displayLeftToRight () {
         if (start == null) {
